@@ -1,5 +1,4 @@
 import { MikroOrmModuleSyncOptions } from '@mikro-orm/nestjs';
-import { Logger } from '@nestjs/common';
 import { registerAs } from '@nestjs/config';
 
 const options: MikroOrmModuleSyncOptions = {
@@ -11,9 +10,13 @@ const options: MikroOrmModuleSyncOptions = {
   baseDir: process.cwd(),
   entities: ['dist/**/*entity.{ts,js}'],
   entitiesTs: ['src/**/*entity.ts'],
+  schemaGenerator: {
+    disableForeignKeys: false,
+  },
+  migrations: {
+    disableForeignKeys: false,
+  },
 };
 export default registerAs('database', () => {
-  Logger.log('james');
-  Logger.log(process.env.POSTGRES_DB);
   return options;
 });

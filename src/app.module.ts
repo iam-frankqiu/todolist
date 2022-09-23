@@ -7,12 +7,13 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import dbConfig from './config/db.config';
+import { ExampleEntityModule } from './example-entity/example-entity.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [],
-      envFilePath: ['local.env'],
+      load: [dbConfig],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -29,6 +30,7 @@ import { AppService } from './app.service';
         return await configService.get('database');
       },
     }),
+    ExampleEntityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

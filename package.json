@@ -11,6 +11,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
+    "start:local": "npx dotenv-run-script local.env -- start:dev",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -18,11 +19,14 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "synchronize": "mikro-orm schema:fresh -r",
+    "synchronize:local": "npx dotenv-run-script local.env -- synchronize"
   },
   "dependencies": {
+    "@mikro-orm/cli": "^5.4.2",
     "@mikro-orm/core": "^5.4.2",
-    "@mikro-orm/nestjs": "^5.1.2",
+    "@mikro-orm/nestjs": "5.1.2",
     "@mikro-orm/postgresql": "^5.4.2",
     "@nestjs/apollo": "^10.1.0",
     "@nestjs/common": "^9.0.0",
@@ -32,8 +36,8 @@
     "@nestjs/platform-express": "^9.0.0",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
+    "dotenv-run-script": "^0.2.0",
     "graphql": "^16.6.0",
-    "postgresql": "^0.0.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
@@ -46,6 +50,7 @@
     "@types/jest": "28.1.4",
     "@types/node": "^16.0.0",
     "@types/supertest": "^2.0.11",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
