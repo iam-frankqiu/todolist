@@ -1,73 +1,32 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+- npm install
+- Install postgresql on local machine (or you can use docker compose, I don’t mind at all 😉)
+    - create new db, user, permission etc.
+- Replace db credentials in local.env and make sure Nest.js + MikroOrm can connect to your local db
+- Research on MikroOrm doc on how to run schema refresh or migration (for this mini project, schema refresh is fine). Apply the db schema generation/refresh then you can start development and testing
+- Optionally you can use db tools like DBeaver to connect to your local db and check the actual tables in the db
+- Hint: (check package.json for details)
+    - Use this to run MikroOrm schema generator’s refresh with local.env vars, this is enough for local dev/testing for this mini project, and we don’t need anything related to db migrations.
+    
+    ```bash
+    npm run synchronize:local
+    ```
+    
+    - Use this to start Nest.js with local.env vars
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+    ## Question
 
-## Description
+Background/Motivation
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+For the take home mini project we are just looking for writing a GraphQL CRUD with relations under Nest.js, GQL, MikroOrm. We want to see how you learn MikroOrm in short time and figure out the best practices using it.
 
-## Installation
+Note: you need to write in GraphQL, NOT REST. (Hint: use `nest g resource` to generate GraphQL scaffoldings (graphql code first) )
 
-```bash
-$ npm install
-```
+So the actual question is pretty at high level and we need a very free-form answer in code:
 
-## Running the app
+- Create ToDoList and ToDoItem resources (entities). ToDoList should have 1-to-Many ToDoItems. And ToDoItems have Many-to-1 relation to ToDoList. ToDoItem should have a description field/column. ToDoList should have a title field/column.
+- Generate the resources and create CRUD endpoints for BOTH ToDoList and ToDoItem. We will also check your naming conventions. CRUD examples: create, update (by id), delete (by id), find (by id), findAll.
 
-```bash
-# development
-$ npm run start
+Hint:
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- I highly recommend you to go through MikroOrm official documentations at high level, but thoroughly, to get its ideas.
