@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateToDoItemInput {
+  description: String!
+}
+
+input CreateToDoListInput {
+  title: String!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -14,6 +22,41 @@ type ExampleEntity {
   updatedAt: DateTime!
 }
 
+type Mutation {
+  createToDoItem(toDoItem: CreateToDoItemInput!, toDoListId: String!): ToDoItemEntity!
+  createToDoList(toDoList: CreateToDoListInput!): ToDoListEntity!
+  removeToDoItemById(id: String!): ToDoItemEntity!
+  removeToDoListById(id: String!): ToDoListEntity!
+  updateToDoItem(toDoItem: UpdateToDoItemInput!, toDoListId: String): ToDoItemEntity!
+  updateToDoList(toDoList: UpdateToDoListInput!): ToDoListEntity!
+}
+
 type Query {
   exampleEntities: [ExampleEntity!]!
+  getAllToDoItems: [ToDoItemEntity!]!
+  getAllToDoLists: [ToDoListEntity!]!
+  getOneToDoItemById(id: String!): ToDoItemEntity!
+  getOneToDoListById(id: String!): ToDoListEntity!
+}
+
+type ToDoItemEntity {
+  description: String!
+  id: String!
+  toDoList: ToDoListEntity!
+}
+
+type ToDoListEntity {
+  id: String!
+  title: String!
+  toDoItems: [ToDoItemEntity!]!
+}
+
+input UpdateToDoItemInput {
+  description: String!
+  id: String!
+}
+
+input UpdateToDoListInput {
+  id: String!
+  title: String!
 }

@@ -1,6 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
+import { Module, NotFoundException } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
@@ -9,6 +9,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import dbConfig from './config/db.config';
 import { ExampleEntityModule } from './example-entity/example-entity.module';
+import { ToDoListModule } from './to-do-list/to-do-list.module';
+import { ToDoItemModule } from './to-do-item/to-do-item.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,6 +33,8 @@ import { ExampleEntityModule } from './example-entity/example-entity.module';
       },
     }),
     ExampleEntityModule,
+    ToDoListModule,
+    ToDoItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
