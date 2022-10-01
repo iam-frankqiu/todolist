@@ -6,14 +6,15 @@
 - Typescript
 - postgresql
 - MikroOrm
+- Graphql
 
 ## Getting started
-- Install postgresql on local machine (or you can use docker compose)
+- Install postgresql on local machine or docker compose
 ```
 yarn
 ```
 
-- Use this to run MikroOrm schema generator’s refresh with local.env vars, this is enough for local dev/testing for this project, and we don’t need anything related to db migrations.
+- Use this to run MikroOrm schema generator’s refresh with local.env vars.
 ```bash
 yarn synchronize:local
 ```
