@@ -8,7 +8,6 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import dbConfig from './config/db.config';
-import { ExampleEntityModule } from './example-entity/example-entity.module';
 import { ToDoListModule } from './to-do-list/to-do-list.module';
 import { ToDoItemModule } from './to-do-item/to-do-item.module';
 @Module({
@@ -32,7 +31,6 @@ import { ToDoItemModule } from './to-do-item/to-do-item.module';
         return await configService.get('database');
       },
     }),
-    ExampleEntityModule,
     ToDoListModule,
     ToDoItemModule,
   ],
