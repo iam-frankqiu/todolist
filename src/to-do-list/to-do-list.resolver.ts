@@ -13,12 +13,12 @@ export class ToDoListResolver {
     return this.toDoListService.create(toDoList);
   }
 
-  @Query(() => [ToDoListEntity], { name: 'getAllToDoLists' })
+  @Query(() => [ToDoListEntity], { name: 'toDoLists' })
   findAll() {
     return this.toDoListService.findAll();
   }
 
-  @Query(() => ToDoListEntity, { name: 'getOneToDoListById' })
+  @Query(() => ToDoListEntity, { name: 'toDoList' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.toDoListService.findOne(id);
   }

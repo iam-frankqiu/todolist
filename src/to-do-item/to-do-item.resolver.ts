@@ -16,12 +16,12 @@ export class ToDoItemResolver {
     return this.toDoItemService.create(toDoListId, toDoItem);
   }
 
-  @Query(() => [ToDoItemEntity], { name: 'getAllToDoItems' })
+  @Query(() => [ToDoItemEntity], { name: 'toDoItems' })
   findAll() {
     return this.toDoItemService.findAll();
   }
 
-  @Query(() => ToDoItemEntity, { name: 'getOneToDoItemById' })
+  @Query(() => ToDoItemEntity, { name: 'toDoItem' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.toDoItemService.findOne(id);
   }
