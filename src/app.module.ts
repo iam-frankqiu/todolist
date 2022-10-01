@@ -5,8 +5,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import dbConfig from './config/db.config';
 import { ToDoListModule } from './to-do-list/to-do-list.module';
 import { ToDoItemModule } from './to-do-item/to-do-item.module';
@@ -34,7 +32,5 @@ import { ToDoItemModule } from './to-do-item/to-do-item.module';
     ToDoListModule,
     ToDoItemModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
