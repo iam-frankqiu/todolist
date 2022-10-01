@@ -10,18 +10,6 @@ input CreateToDoListInput {
   title: String!
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-type ExampleEntity {
-  createdAt: DateTime!
-  exampleTextField: String!
-  id: String!
-  updatedAt: DateTime!
-}
-
 type Mutation {
   createToDoItem(toDoItem: CreateToDoItemInput!, toDoListId: String!): ToDoItemEntity!
   createToDoList(toDoList: CreateToDoListInput!): ToDoListEntity!
@@ -32,11 +20,10 @@ type Mutation {
 }
 
 type Query {
-  exampleEntities: [ExampleEntity!]!
-  getAllToDoItems: [ToDoItemEntity!]!
-  getAllToDoLists: [ToDoListEntity!]!
-  getOneToDoItemById(id: String!): ToDoItemEntity!
-  getOneToDoListById(id: String!): ToDoListEntity!
+  toDoItem(id: String!): ToDoItemEntity!
+  toDoItems: [ToDoItemEntity!]!
+  toDoList(id: String!): ToDoListEntity!
+  toDoLists: [ToDoListEntity!]!
 }
 
 type ToDoItemEntity {
