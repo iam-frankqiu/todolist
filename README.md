@@ -6,7 +6,7 @@
 - Typescript
 - postgresql
 - MikroOrm
-- Graphql
+- GraphQL
 
 ## Getting started
 - Install postgresql on local machine or docker compose
