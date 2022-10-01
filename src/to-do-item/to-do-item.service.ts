@@ -31,7 +31,6 @@ export class ToDoItemService {
   async create(toDoListId: string, data: CreateToDoItemInput) {
     const toDoList = await this.validateToDoItem(toDoListId, data);
     const toDoItem = await this.toDoItemEntityRepository.create({ toDoList, ...data })
-    // const toDoItem = new ToDoItemEntity();
     toDoList.toDoItems.add(toDoItem);
     await this.toDoListEntityRepository.flush();
     return toDoItem;
