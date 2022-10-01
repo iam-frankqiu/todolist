@@ -21,8 +21,8 @@ import { ToDoItemModule } from './to-do-item/to-do-item.module';
       debug: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      playground: false,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      playground: true,
+      // plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     MikroOrmModule.forRootAsync({
       imports: [ConfigModule],
