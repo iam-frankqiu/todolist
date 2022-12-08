@@ -8,6 +8,11 @@ import { join } from 'path';
 import dbConfig from './config/db.config';
 import { ToDoListModule } from './to-do-list/to-do-list.module';
 import { ToDoItemModule } from './to-do-item/to-do-item.module';
+import { TopicModule } from './topic/topic.module';
+import { PollModule } from './poll/poll.module';
+import { OptionModule } from './option/option.module';
+import { ProposalModule } from './proposal/proposal.module';
+import { TopicModule } from './topic/topic.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,6 +36,10 @@ import { ToDoItemModule } from './to-do-item/to-do-item.module';
     }),
     ToDoListModule,
     ToDoItemModule,
+    TopicModule,
+    ProposalModule,
+    OptionModule,
+    PollModule,
   ],
 })
 export class AppModule {}
